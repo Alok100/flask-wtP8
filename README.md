@@ -16,6 +16,11 @@ This is a [Flask](https://flask.palletsprojects.com/en/1.1.x/) app that serves a
 
 - Python
 - Flask
+- flask
+- opencv-python
+- dlib
+- face Recognition
+- socketio
 
 ## 💁‍♀️ How to use
 
