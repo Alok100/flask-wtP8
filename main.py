@@ -1,13 +1,19 @@
-from flask import Flask, jsonify
-import os
+from flask import Flask, render_template, Response
+import cv2
+import FaceDetector as detector
 
-app = Flask(__name__)
+app=Flask(__name__)
+camera = cv2.VideoCapture(0)
 
 
 @app.route('/')
 def index():
-    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
+    return render_template('index.html')
 
+@app.route('/video_feed')
+def video_feed():
+    return Response(detector.PlaceObject("alok1.png", camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+if __name__=='__main__':
+    # app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
